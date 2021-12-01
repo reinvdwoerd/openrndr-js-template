@@ -1,38 +1,44 @@
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
-import org.openrndr.extra.parameters.title
+import org.openrndr.webgl.Screenshots
 
 
 suspend fun main() = applicationAsync {
     configure {
         title = "HOI"
+        hideCursor = true
     }
 
     program {
         mouse.buttonDown.listen {
-            kotlin.js.console.log("down")
-            clipboard.contents = seconds.toString()
+            console.log("mouse down")
+//            clipboard.contents = seconds.toString()
         }
 
         mouse.buttonUp.listen {
-            kotlin.js.console.log("up")
-            println(clipboard.contents)
+            console.log("mouse up")
+//            println(clipboard.contents)
         }
 
         keyboard.keyDown.listen {
-            println(it.name)
+            console.log("down", it.name)
             println(keyboard.pressedKeys)
         }
 
         keyboard.keyUp.listen {
-            println(it.name)
+            console.log("up", it.name)
             println(keyboard.pressedKeys)
+        }
+
+        extend(Screenshots()) {
+            key = "ArrowUp"
         }
 
         extend {
             val a = ColorRGBa.BLUE
             drawer.clear(a)
             drawer.fill = ColorRGBa.WHITE
+            drawer.rectangle(10.0,10.0, 200.0,200.0)
         }
     }
 }
