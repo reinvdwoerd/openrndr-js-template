@@ -1,15 +1,38 @@
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
-import org.openrndr.color.rgb
-import kotlin.math.cos
+import org.openrndr.extra.parameters.title
+
 
 suspend fun main() = applicationAsync {
+    configure {
+        title = "HOI"
+    }
+
     program {
+        mouse.buttonDown.listen {
+            kotlin.js.console.log("down")
+            clipboard.contents = seconds.toString()
+        }
+
+        mouse.buttonUp.listen {
+            kotlin.js.console.log("up")
+            println(clipboard.contents)
+        }
+
+        keyboard.keyDown.listen {
+            println(it.name)
+            println(keyboard.pressedKeys)
+        }
+
+        keyboard.keyUp.listen {
+            println(it.name)
+            println(keyboard.pressedKeys)
+        }
+
         extend {
-            val a = rgb("#ff0000")
+            val a = ColorRGBa.BLUE
             drawer.clear(a)
             drawer.fill = ColorRGBa.WHITE
-            drawer.circle(width/2.0, height/2.0, 100.0 + cos(seconds)*40.0)
         }
     }
 }
