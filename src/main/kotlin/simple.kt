@@ -11,7 +11,7 @@ suspend fun main() = applicationAsync {
     }
 
     program {
-        val img = loadImageSuspend("./Bucephala-albeola-010.jpg")
+        val img = loadImageSuspend("./pm5544.png")
 
         mouse.buttonDown.listen {
             console.log("mouse down")
@@ -38,15 +38,11 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
-            val a = ColorRGBa.BLUE
-            drawer.clear(a)
-            drawer.fill = ColorRGBa.WHITE
-
-            drawer.image(img, 200.0, 0, 200.0, 200.0)
-
-            drawer.rectangle(10.0,10.0, 200.0,200.0)
-            drawer.circle(10.0 + 100.0, 300.0, 100.0)
-
+            drawer.clear(ColorRGBa.PINK)
+            drawer.image(img, 20.0, 20.0, 384.0, 288.0)
+            drawer.rectangle(20.0, 328.0, 200.0, 200.0)
+            drawer.circle(340.0, (328.0 + 100.0), 100.0)
+            drawer.lineSegment(20.0, 548.0, 440.0, 548.0)
         }
     }
 }
