@@ -1,10 +1,12 @@
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.loadImageSuspend
-import org.openrndr.webgl.Screenshots
+import org.openrndr.math.Vector2
+import org.openrndr.shape.contour
+import org.openrndr.extensions.Screenshots
 
 
-suspend fun main() = applicationAsync {
+suspend fun main2() = applicationAsync {
     configure {
         title = "HOI"
         hideCursor = true
@@ -38,11 +40,22 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
-            drawer.clear(ColorRGBa.PINK)
+            drawer.clear(ColorRGBa.GRAY)
             drawer.image(img, 20.0, 20.0, 384.0, 288.0)
             drawer.rectangle(20.0, 328.0, 200.0, 200.0)
             drawer.circle(340.0, (328.0 + 100.0), 100.0)
             drawer.lineSegment(20.0, 548.0, 440.0, 548.0)
+
+            val c = contour {
+                moveTo(Vector2(440.0, 20.0))
+                // -- here `cursor` points to the end point of the previous command
+                lineTo(cursor + Vector2(200.0, 0.0))
+                lineTo(cursor + Vector2(0.0, 200.0))
+                lineTo(anchor)
+                close()
+            }
+
+            drawer.contour(c)
         }
     }
 }
