@@ -1,9 +1,11 @@
 import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.grayscale
+import org.openrndr.draw.tint
 
 
-suspend fun main() = applicationAsync {
+suspend fun main4() = applicationAsync {
     configure {
         title = "Webcam test"
     }
@@ -11,12 +13,11 @@ suspend fun main() = applicationAsync {
     program {
         val camera = loadVideoDevice().await()
 
-        keyboard.keyDown.listen {
-            camera.update()
-        }
 
         extend {
+            camera.update()
             drawer.clear(ColorRGBa.PINK)
+//            drawer.drawStyle.colorMatrix = tint(ColorRGBa.WHITE.shade(.5)) //grayscale()
             drawer.image(camera.colorBuffer)
         }
     }
