@@ -1,6 +1,7 @@
 import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extras.imageFit.imageFit
 
 suspend fun videotest() = applicationAsync {
     configure {
@@ -8,15 +9,20 @@ suspend fun videotest() = applicationAsync {
     }
 
     program {
-        val video = loadVideo("./phonk 1.mp3").await()
+        val video = loadVideo("./amazone is verkrekt.mp4").await()
 
+        video.videoElement.apply {
+            muted = true
+            loop = true
+            play()
+        }
 
 
         extend {
             video.update()
-            drawer.clear(ColorRGBa.BLUE)
 
-            drawer.image(video.colorBuffer)
+            drawer.clear(ColorRGBa.BLUE)
+            drawer.imageFit(video.colorBuffer, drawer.bounds)
         }
     }
 }

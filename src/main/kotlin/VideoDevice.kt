@@ -9,7 +9,7 @@ import kotlin.js.Promise
 
 
 class VideoDevice(
-    private val videoElement: HTMLVideoElement,
+    val videoElement: HTMLVideoElement,
     val colorBuffer: ColorBuffer
 ) {
 
@@ -44,9 +44,8 @@ fun loadVideo(src: String): Promise<VideoDevice> {
     return Promise() { resolve, reject ->
         val video = document.createElement("video") as HTMLVideoElement
         video.src = src
-        video.play()
-        
-        video.onload = { event ->
+
+        video.oncanplay = { event ->
             val videoBuffer = colorBuffer(video.videoWidth, video.videoHeight)
             resolve(VideoDevice(video, videoBuffer))
         }
