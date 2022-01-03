@@ -6,7 +6,7 @@ import org.openrndr.shape.contour
 import org.openrndr.extensions.Screenshots
 
 
-suspend fun main2() = applicationAsync {
+suspend fun primitivestest() = applicationAsync {
     configure {
         title = "HOI"
         hideCursor = true

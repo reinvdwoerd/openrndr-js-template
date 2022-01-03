@@ -5,7 +5,7 @@ import org.openrndr.draw.grayscale
 import org.openrndr.draw.tint
 
 
-suspend fun main4() = applicationAsync {
+suspend fun webcamtest() = applicationAsync {
     configure {
         title = "Webcam test"
     }

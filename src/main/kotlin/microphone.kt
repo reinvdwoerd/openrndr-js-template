@@ -6,7 +6,7 @@ import org.openrndr.math.map
 import org.openrndr.shape.Rectangle
 
 
-suspend fun main3() = applicationAsync {
+suspend fun microphonetest() = applicationAsync {
     val nav = window.navigator
 
     configure {

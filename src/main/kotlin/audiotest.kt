@@ -2,7 +2,7 @@ import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
 
-suspend fun main() = applicationAsync {
+suspend fun audiotest() = applicationAsync {
     configure {
         title = "Audio player test"
     }
