@@ -1,6 +1,7 @@
 import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.tint
 import org.openrndr.extras.imageFit.imageFit
 
 suspend fun videotest() = applicationAsync {
@@ -17,12 +18,12 @@ suspend fun videotest() = applicationAsync {
             play()
         }
 
-
         extend {
             video.update()
 
             drawer.clear(ColorRGBa.BLUE)
             drawer.imageFit(video.colorBuffer, drawer.bounds)
+            drawer.drawStyle.colorMatrix = tint(ColorRGBa.BLUE)
         }
     }
 }
