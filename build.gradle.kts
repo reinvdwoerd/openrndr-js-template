@@ -48,7 +48,7 @@ dependencies {
     implementation(openrndr("dds"))
     implementation(openrndr("draw"))
     implementation(openrndr("webgl"))
-    implementation(openrndr("extensions"))
+//    implementation(openrndr("extensions"))
 
     for (feature in orxFeatures) {
         implementation(orx(feature))

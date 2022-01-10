@@ -1,3 +1,3 @@
 
 
-suspend fun main() = videotest()
+suspend fun main() = draganddroptest()
