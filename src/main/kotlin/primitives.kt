@@ -3,7 +3,7 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.loadImageSuspend
 import org.openrndr.math.Vector2
 import org.openrndr.shape.contour
-//import org.openrndr.extensions.Screenshots
+import org.openrndr.extensions.Screenshots
 
 
 suspend fun primitivestest() = applicationAsync {
@@ -35,9 +35,9 @@ suspend fun primitivestest() = applicationAsync {
             println(keyboard.pressedKeys)
         }
 
-//        extend(Screenshots()) {
-//            key = "ArrowUp"
-//        }
+        extend(Screenshots()) {
+            key = "ArrowUp"
+        }
 
         extend {
             drawer.clear(ColorRGBa.PINK)

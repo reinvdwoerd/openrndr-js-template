@@ -1,6 +1,7 @@
 import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extras.web.loadAudio
 
 suspend fun audiotest() = applicationAsync {
     configure {

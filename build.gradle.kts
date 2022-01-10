@@ -21,6 +21,7 @@ val orxFeatures = setOf(
 //    "orx-gradient-descent",
     "orx-image-fit",
     "orx-noise",
+    "orx-web",
 //    "orx-parameters",
 //    "orx-shade-styles",
 //    "orx-shader-phrases",
@@ -48,7 +49,7 @@ dependencies {
     implementation(openrndr("dds"))
     implementation(openrndr("draw"))
     implementation(openrndr("webgl"))
-//    implementation(openrndr("extensions"))
+    implementation(openrndr("extensions"))
 
     for (feature in orxFeatures) {
         implementation(orx(feature))

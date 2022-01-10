@@ -2,6 +2,7 @@ import kotlinx.browser.window
 import kotlinx.coroutines.await
 import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extras.web.loadAudioDevice
 import org.openrndr.math.map
 import org.openrndr.shape.Rectangle
 
