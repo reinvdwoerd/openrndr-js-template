@@ -1,3 +1,3 @@
 
 
-suspend fun main() = primitivestest()
+suspend fun main() = draganddroptest()

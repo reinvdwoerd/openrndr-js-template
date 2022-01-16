@@ -3,6 +3,7 @@ import org.openrndr.applicationAsync
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.grayscale
 import org.openrndr.draw.tint
+import org.openrndr.extras.web.loadVideoDevice
 
 
 suspend fun webcamtest() = applicationAsync {
