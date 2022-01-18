@@ -1,3 +1,4 @@
 import filters.*
+import filters.blur.hashblurtest
 
-suspend fun main() = zoomblurtest()
+suspend fun main() = hashblurtest()
