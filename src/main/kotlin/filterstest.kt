@@ -1,12 +1,10 @@
 import org.openrndr.applicationAsync
 import org.openrndr.draw.Filter
 import org.openrndr.draw.colorBuffer
-import org.openrndr.extensions.Screenshots
+import org.openrndr.draw.loadImageSuspend
+import org.openrndr.extra.fx.blur.BoxBlur
 import org.openrndr.extra.fx.mppFilterShader
-import org.openrndr.extra.parameters.BooleanParameter
-import org.openrndr.extra.parameters.DoubleParameter
 import org.openrndr.math.Vector4
-import org.openrndr.resourceUrl
 
 
 const val hashnoise_shader = """
@@ -66,16 +64,13 @@ class HashNoise : Filter(mppFilterShader(hashnoise_shader, "hash-noise")) {
 
 suspend fun filterstest() = applicationAsync {
     program {
-        extend(Screenshots())
+        val img = loadImageSuspend("./pm5544.png")
+        val cb = colorBuffer(width, height)
+        val blur = BoxBlur()
 
         extend {
-            val cb = colorBuffer(width, height)
-            val hn = HashNoise()
-            extend {
-                hn.seed = seconds
-                hn.apply(emptyArray(), cb)
-                drawer.image(cb)
-            }
+            blur.apply(img, cb)
+            drawer.image(cb)
         }
     }
 }
