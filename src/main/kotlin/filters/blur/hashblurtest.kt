@@ -52,9 +52,9 @@ vec4 blur(vec2 uv, float radius) {
 	vec2 random = hash22(uv + vec2(time));
 
 	vec4 acc = vec4(0.0);
-
-	for (int i = 0; i < 10000; i++) {
-        if (i == samples) break;
+    
+	for (int i = 0; i < 100; i++) {
+        if (i > samples) break;
         #ifndef OR_GL_TEXTURE2D
 		acc += texture(tex0, uv + circle * sampleTexture(random));
         #else
@@ -117,6 +117,9 @@ suspend fun hashblurtest() = applicationAsync {
         val blur = HashBlur()
 
         extend {
+            blur.samples = mouse.position.y.map(0.0, drawer.width.toDouble(), 10.0, 100.0).toInt()
+            print(blur.samples)
+
             blur.radius = mouse.position.x.map(0.0,drawer.width.toDouble(), 1.0, 4.0)
             blur.apply(img, cb)
             drawer.imageFit(cb, drawer.bounds)
