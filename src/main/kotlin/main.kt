@@ -1,4 +1,4 @@
-import filters.blur.hashblurtest
+import filters.blur.*
 import filters.grain.filmgraintest
 
-suspend fun main() = filmgraintest()
+suspend fun main() = gaussianblurtest()
